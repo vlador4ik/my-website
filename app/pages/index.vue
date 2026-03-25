@@ -1,7 +1,10 @@
 <template>
     <div class="font-custom bg-black text-grey">
     <MainHeader />
-    <HeroSection />
+    <main>
+      <HeroSection />
+      <About />
+    </main>
   </div>
 </template>
 

@@ -26,12 +26,12 @@
                         rounded-2xl font-semibold hover:border-primary/50 transition-colors w-full sm:w-auto" tabindex="0">Contact Me</button>
                 </div>
                 <div class="flex flex-wrap gap-3 justify-center pt-8">
-                    <div v-for="skill in skills" :key="skill" class="px-4 py-2 bg-card/50 backdrop-blur-sm border border-border rounded-xl text-sm font-medium text-foreground/80">
+                    <div v-for="skill in skills" :key="skill" class="px-4 py-2 bg-card/50 backdrop-blur-sm border border-border rounded-full text-sm font-medium text-foreground/80">
                         {{ skill }}
                     </div>
                 </div>
                 <div class="flex gap-6 justify-center pt-8">
-                    <a :href="social.href" aria-label="GitHub" v-for="social in socials" :key="social.href" class="p-2 bg-card/50 backdrop-blur-sm border border-grey rounded-full text-muted-foreground hover:text-primary hover:border-primary/50 hover:scale-110 transition" tabindex="0">
+                    <a :href="social.url" v-for="social in socials" :key="social.url" class="p-2 bg-card/50 backdrop-blur-sm border border-grey rounded-full text-muted-foreground hover:text-primary hover:border-primary/50 hover:scale-110 transition" tabindex="0">
                         <component :is="social.component" />
                     </a>
                 </div>
@@ -42,21 +42,22 @@
 
 <script setup lang="ts">
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-vue-next';
+import type { TSocial } from '~/types/socials/TSocial';
 
-const skills = ['Vue 2/3', 'Nuxt 3', 'TypeScript', 'Pinia', 'Tailwind'];
+const skills: string[] = ['Vue 2/3', 'Nuxt 3', 'TypeScript', 'Pinia', 'Tailwind'];
 
-const socials = [
+const socials: TSocial[] = [
     {
         component: Github,
-        href: 'https://github.com/vlador4ik',
+        url: 'https://github.com/vlador4ik',
     },
     {
         component: Linkedin,
-        href: 'https://www.linkedin.com/in/vlad-horobets/',
+        url: 'https://www.linkedin.com/in/vlad-horobets/',
     },
     {
         component: Mail,
-        href: 'mailto:vlad_horob@ukr.net',
+        url: 'mailto:vlad_horob@ukr.net',
     }
 ]
 </script>

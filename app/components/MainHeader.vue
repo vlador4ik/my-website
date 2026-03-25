@@ -11,7 +11,7 @@
                     </li>
                 </ul>
             </nav>
-            <a href="#contact" class="text-base p-2 px-6  bg-gradient-to-r from-white/20 to-secondary rounded-full hover:scale-110 transition-transform" tabindex="0">
+            <a href="#contact" class="text-base p-2 px-6  bg-gradient-to-b from-primary to-secondary rounded-full hover:scale-110 transition-transform" tabindex="0">
                 <span class="text-white">Let's Talk</span>
             </a>
         </div>
@@ -29,8 +29,9 @@
 
 <script setup lang="ts">
 import { Menu, X } from 'lucide-vue-next';
+import type { THeaderItem } from '~/types/header/THeaderItem';
 const isMenuOpen = ref(false);
-const items = [
+const items: THeaderItem[] = [
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#about' },
     { label: 'Experience', href: '#about' },

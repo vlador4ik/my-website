@@ -19,7 +19,8 @@ export default {
       'white': '#E4E4E7',
       'accent': '#EC4899',
       'grey': '#A1A1AA',
-      'black': '#0A0A0F'
+      'black': '#0A0A0F',
+      'card': '#18181B80'
     },
     },
   },
