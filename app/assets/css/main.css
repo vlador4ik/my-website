@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .section-title {
+    @apply text-6xl text-white font-bold text-center mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-center;
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 0.7s ease-out;
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-child {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 0.7s ease-out;
+}
+
+.scroll-reveal--visible .scroll-reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+}

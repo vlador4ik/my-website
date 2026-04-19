@@ -1,26 +1,41 @@
 <template>
     <header class="p-4 relative">
         <div class="container mx-auto flex items-center justify-between">
-            <button @click="toggleMenu" class="md:hidden flex items-center">
+            <button
+                type="button"
+                @click="toggleMenu"
+                class="md:hidden flex items-center"
+                :aria-expanded="isMenuOpen"
+                aria-controls="mobile-nav"
+                aria-label="Toggle menu"
+            >
                 <component :is="isMenuOpen ? X : Menu" :size="24" />
             </button>
-            <nav>
+            <nav aria-label="Primary">
                 <ul class="hidden md:flex gap-8">
-                    <li v-for="item in items" :key="item.label">
-                        <a class="text-grey" :href="item.href">{{ item.label }}</a>
+                    <li v-for="item in navItems" :key="item.label">
+                        <a
+                            class="text-grey hover:text-primary transition-colors"
+                            :href="item.href"
+                            :aria-current="isActive(item.href) ? 'page' : undefined"
+                        >{{ item.label }}</a>
                     </li>
                 </ul>
             </nav>
-            <a href="#contact" class="text-base p-2 px-6  bg-gradient-to-b from-primary to-secondary rounded-full hover:scale-110 transition-transform" tabindex="0">
+            <a href="#contact" class="text-base p-2 px-6 bg-gradient-to-b from-primary to-secondary rounded-full hover:scale-110 transition-transform">
                 <span class="text-white">Let's Talk</span>
             </a>
         </div>
 
         <!-- Mobile animated menu -->
         <div class="mobile-menu-wrap md:hidden">
-            <ul class="mobile-menu" :class="{open: isMenuOpen}">
-                <li v-for="(item, i) in items" :key="item.label" :style="itemStyle(i)">
-                    <a @click="toggleMenu" :href="item.href">{{ item.label }}</a>
+            <ul id="mobile-nav" class="mobile-menu" :class="{open: isMenuOpen}">
+                <li v-for="(item, i) in navItems" :key="item.label" :style="itemStyle(i)">
+                    <a
+                        @click="toggleMenu"
+                        :href="item.href"
+                        :aria-current="isActive(item.href) ? 'page' : undefined"
+                    >{{ item.label }}</a>
                 </li>
             </ul>
         </div>
@@ -29,18 +44,21 @@
 
 <script setup lang="ts">
 import { Menu, X } from 'lucide-vue-next';
-import type { THeaderItem } from '~/types/header/THeaderItem';
+import { navItems } from '~/data/navigation';
+
+const route = useRoute();
 const isMenuOpen = ref(false);
-const items: THeaderItem[] = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#about' },
-    { label: 'Experience', href: '#about' },
-    { label: 'Projects', href: '#about' },
-    { label: 'Contact', href: '#about' },
-];
+
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
-}
+};
+
+const isActive = (href: string) => {
+    if (href.startsWith('#')) {
+        return route.hash === href;
+    }
+    return route.path === href;
+};
 
 const itemStyle = (i: number) => ({
     transitionDelay: isMenuOpen.value ? `${i * 60}ms` : '0ms',
