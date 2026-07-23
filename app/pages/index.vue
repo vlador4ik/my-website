@@ -6,7 +6,11 @@
             <About ref="about" />
             <Skills ref="skills" />
             <Experience ref="experience" />
+            <Projects ref="projects" />
+            <Philosophy ref="philosophy" />
+            <Contact ref="contact" />
         </main>
+        <MainFooter />
     </div>
 </template>
 
@@ -16,10 +20,16 @@ type SectionRef = { $el: HTMLElement } | null;
 const about = useTemplateRef<SectionRef>('about');
 const skills = useTemplateRef<SectionRef>('skills');
 const experience = useTemplateRef<SectionRef>('experience');
+const projects = useTemplateRef<SectionRef>('projects');
+const philosophy = useTemplateRef<SectionRef>('philosophy');
+const contact = useTemplateRef<SectionRef>('contact');
 
 useScrollReveal(about);
 useScrollReveal(skills);
 useScrollReveal(experience);
+useScrollReveal(projects);
+useScrollReveal(philosophy);
+useScrollReveal(contact);
 
 useHead({
     htmlAttrs: { lang: 'en' },
