@@ -1,17 +1,17 @@
-import { Mail, Send } from 'lucide-vue-next';
-import type { TContactMethodProps } from '~/types/contact/TContactMethodProps';
+import { Mail, Send } from "lucide-vue-next";
+import type { TContactMethodProps } from "~/types/contact/TContactMethodProps";
 
 export const contactMethods: TContactMethodProps[] = [
-    {
-        icon: Mail,
-        label: 'Email',
-        value: 'vlad_horob@ukr.net',
-        href: 'mailto:vlad_horob@ukr.net',
-    },
-    {
-        icon: Send,
-        label: 'Telegram',
-        value: '@vladhorobets',
-        href: 'https://t.me/vladhorobets',
-    },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "vlad_horob@ukr.net",
+    href: "mailto:vlad_horob@ukr.net",
+  },
+  {
+    icon: Send,
+    label: "Telegram",
+    value: "@vlador4ik",
+    href: "https://t.me/vlador4ik",
+  },
 ];
